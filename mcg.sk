@@ -1,0 +1,406 @@
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#
+# 					Skritp bei SilentWolf und darf jederzeit geändert und weitergegeben werden. Bitte Ideegeber Therniau in dein Skript mit eingeben!										#
+#																							Version 1.3																						#
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#
+#-------------------------------------------------Bitte nur die Optionen ändern damit das Script weiter funktioniert------------------------------------------------------------------------#
+
+options:
+	version: &1.4
+	
+	prefix: &3Inventar Erweiterung
+    
+	colorcode: &e
+    
+	highlightcolor: &9
+  
+	permisionmessage: &3Inventar Erweiterung:  &4Dir fehlt die Berechtigung.
+
+	litem0: red wool
+	litem0-name: &4In Inventar 1 speichern		
+	litem0-slot: 0
+	litem0-cmd: sinv 1
+	litem1: chest
+	litem1-name: &2Lade Inventar 1 	
+	litem1-slot: 1
+	litem1-cmd: iwechsel 1
+	litem2: red wool
+	litem2-name: &4In Inventar 2 speichern	
+	litem2-slot: 2
+	litem2-cmd: sinv 2
+	litem3: chest
+	litem3-name: &2Lade Inventar 2	
+	litem3-slot: 3
+	litem3-cmd: iwechsel 2
+	litem4: red wool
+	litem4-name: &4In Inventar 3 speichern	
+	litem4-slot: 4
+	litem4-cmd: sinv 3
+	litem5: chest
+	litem5-name: &2Lade Inventar 3
+	litem5-slot: 5
+	litem5-cmd: iwechsel 3
+	litem6: red wool
+	litem6-name: &4In Inventar 4 speichern 	
+	litem6-slot: 6
+	litem6-cmd: sinv 4
+	litem7: chest
+	litem7-name: &2Lade Inventar	4 
+	litem7-slot: 7
+	litem7-cmd: iwechsel 4
+	litem8: red wool
+	litem8-name: &2Lade Inventar 5 speichern	
+	litem8-slot: 8
+	litem8-cmd: sinv 5
+	litem9: chest
+	litem9-name: &2Lade Inventar 5	
+	litem9-slot: 9
+	litem9-cmd: iwechsel 5
+	litem10: red wool
+	litem10-name: &4In Inventar 6 speichern	
+	litem10-slot: 10
+	litem10-cmd: sinv 6
+	litem11: chest
+	litem11-name: &2Lade Inventar 6	
+	litem11-slot: 11
+	litem11-cmd: iwechsel 6
+	litem12: red wool
+	litem12-name: &4In Inventar 7 speichern	
+	litem12-slot: 12
+	litem12-cmd: sinv 7
+	litem13: chest
+	litem13-name: &2Lade Inventar 7	
+	litem13-slot: 13
+	litem13-cmd: iwechsel 7
+	litem14: red wool
+	litem14-name: &4In Inventar 8 speichern	
+	litem14-slot: 14
+	litem14-cmd: sinv 8
+	litem15: chest
+	litem15-name: &2Lade Inventar 8	
+	litem15-slot: 15
+	litem15-cmd: iwechsel 8
+	litem16: red wool
+	litem16-name: &4In Inventar 9 speichern	
+	litem16-slot: 16
+	litem16-cmd: sinv 9
+	litem17: chest
+	litem17-name: &2Lade Inventar 9	
+	litem17-slot: 17
+	litem17-cmd: iwechsel 9
+	litem18: red wool
+	litem18-name: &4In Inventar 10 speichern	
+	litem18-slot: 18
+	litem18-cmd: sinv 10
+	litem19: chest
+	litem19-name: &2Lade Inventar 10	
+	litem19-slot: 19
+	litem19-cmd: iwechsel 10
+	litem20: barrier
+	litem20-name: &6Aktuelles Inventar Löschen	
+	litem20-slot: 20
+	litem20-cmd: invl
+	
+	
+	item0: enchanted book
+	item0-name: &aTeleporter Auswahl		
+	item0-slot: 0
+	item0-cmd: teleportermenu
+	item1: note block
+	item1-name: &aShop 	
+	item1-slot: 1
+	item1-cmd: shopmenu
+	item2: string
+	item2-name: Multi Command Gui Reload	
+	item2-slot: 2
+	item2-cmd: skript reload mcg.sk
+	item3: wooden axe
+	item3-name: Wechsel in Gamemode Creative	
+	item3-slot: 3
+	item3-cmd: gamemode creative
+	item4: wooden sword
+	item4-name: Wechsel in Gamemode Survival	
+	item4-slot: 4
+	item4-cmd: gamemode survival
+	item5: feather
+	item5-name: Flieg an und aus
+	item5-slot: 5
+	item5-cmd: fly
+	item6: name tag
+	item6-name: Anzeigen Spieler online	
+	item6-slot: 6
+	item6-cmd: list
+	item7: glass
+	item7-name: noch nicht belegt	
+	item7-slot: 7
+	item7-cmd: noch nicht belegt
+	item8: glass
+	item8-name: noch nicht belegt	
+	item8-slot: 8
+	item8-cmd: noch nicht belegt
+	item9: glass
+	item9-name: noch nicht belegt	
+	item9-slot: 9
+	item9-cmd: noch nicht belegt
+	item10: glass
+	item10-name: noch nicht belegt	
+	item10-slot: 10
+	item10-cmd: noch nicht belegt
+	item11: glass
+	item11-name: noch nicht belegt	
+	item11-slot: 11
+	item11-cmd: noch nicht belegt
+	item12: glass
+	item12-name: noch nicht belegt	
+	item12-slot: 12
+	item12-cmd: noch nicht belegt
+	item13: glass
+	item13-name: noch nicht belegt	
+	item13-slot: 13
+	item13-cmd: noch nicht belegt
+	item14: glass
+	item14-name: noch nicht belegt	
+	item14-slot: 14
+	item14-cmd: noch nicht belegt
+	item15: glass
+	item15-name: noch nicht belegt	
+	item15-slot: 15
+	item15-cmd: noch nicht belegt
+	item16: glass
+	item16-name: noch nicht belegt	
+	item16-slot: 16
+	item16-cmd: noch nicht belegt
+	item17: glass
+	item17-name: noch nicht belegt	
+	item17-slot: 17
+	item17-cmd: noch nicht belegt
+	item18: glass
+	item18-name: noch nicht belegt	
+	item18-slot: 18
+	item18-cmd: noch nicht belegt
+	item19: glass
+	item19-name: noch nicht belegt	
+	item19-slot: 19
+	item19-cmd: noch nicht belegt
+	item20: glass
+	item20-name: noch nicht belegt	
+	item20-slot: 20
+	item20-cmd: noch nicht belegt
+	
+	header: &eWillkommen auf Zauschcraft &2%player% \\n &eSchau mal im Forum Vorbei unter: http://www.zauschcraft.de/forum/				#neue Zeile immer mit "Willkommen auf Zauschcraftß\\n Dies ist die Zeile 2"﻿	
+	footer: &ehttp://www.zauschcraft.de
+	contxt0: &9☣☣☣☣☣☣☣☣☣☣☣☣&c&lMulti Command GUI&9☣☣☣☣☣☣☣☣☣☣☣☣☣☣
+	contxt2: &eSchön das du wieder hier bist &2%player%!
+	contxt3: &eSchau mal im Forum Vorbei unter: http://www.zauschcraft.de/forum/
+	contxt1: &6Willkommen &9%player% 
+	contxt4: &c&lIn dein Inventar wurde das Multi Command GUI Item abgelegt
+	contxt5: &c&lIn dein Inventar wurde Das Reiseinventar abgelegt
+	contxt6: &9☣☣☣☣☣☣☣☣☣☣☣☣&c&lMulti Command GUI&9☣☣☣☣☣☣☣☣☣☣☣☣☣☣
+	
+	clear: air
+	
+	guiitem: enchanted book
+	gui-name: &eMulti Command GUI
+	gui-lore: &4Zauschcraft Multi Command Gui
+	gui-cmd: MCG
+	
+	lager: chest
+	lager-name: &eReiselager
+	lager-lore: &2Dies ist eine Transportbox welche dein Inventar erweitert!
+	lager-cmd: TB
+
+on join:
+	set tab header to "{@header}" and footer to "{@footer}" for player
+	wait 10 tick
+	set slot 7 of player to {@lager} named "{@lager-name}"
+	format slot 7 of player with {@lager} named "{@lager-name}" with lore "{@lager-lore}" to be unstealable
+	wait 10 tick
+	set slot 8 of player to {@guiitem} named "{@gui-name}"
+	format slot 8 of player with {@guiitem} named "{@gui-name}" with lore "{@gui-lore}" to be unstealable
+	wait 10 second
+	message "{@contxt0}" 
+	message "{@contxt1}" 
+	message "{@contxt2}" 
+	message "{@contxt3}" 
+	message "{@contxt4}"
+	message "{@contxt5}"
+
+on right click with {@guiitem}:
+	wait 5 tick
+	open chest with 6 rows named "{@gui-name}" to player
+	format slot 0 of player with {@item0} named "{@item0-name}" with lore "{@item0-name}" to be unstealable
+	format slot 1 of player with {@item1} named "{@item1-name}" with lore "{@item1-name}" to be unstealable
+	format slot 3 of player with {@item3} named "{@item3-name}" with lore "{@item3-name}" to be unstealable	
+	format slot 4 of player with {@item4} named "{@item4-name}" with lore "{@item4-name}" to be unstealable
+	format slot 5 of player with {@item5} named "{@item5-name}" with lore "{@item5-name}" to be unstealable	
+	format slot 6 of player with {@item6} named "{@item6-name}" with lore "{@item6-name}" to be unstealable
+	format slot 7 of player with {@item7} named "{@item7-name}" with lore "{@item7-name}" to be unstealable
+	format slot 8 of player with {@item8} named "{@item8-name}" with lore "{@item8-name}" to be unstealable
+	format slot 9 of player with {@item9} named "{@item9-name}" with lore "{@item9-name}" to be unstealable
+	format slot 10 of player with {@item10} named "{@item10-name}" with lore "{@item10-name}" to be unstealable
+	format slot 11 of player with {@item11} named "{@item11-name}" with lore "{@item11-name}" to be unstealable
+	format slot 12 of player with {@item12} named "{@item12-name}" with lore "{@item12-name}" to be unstealable
+	format slot 13 of player with {@item13} named "{@item13-name}" with lore "{@item13-name}" to be unstealable	
+	format slot 14 of player with {@item14} named "{@item14-name}" with lore "{@item14-name}" to be unstealable
+	format slot 15 of player with {@item15} named "{@item15-name}" with lore "{@item15-name}" to be unstealable	
+	format slot 16 of player with {@item16} named "{@item16-name}" with lore "{@item16-name}" to be unstealable
+	format slot 17 of player with {@item17} named "{@item17-name}" with lore "{@item17-name}" to be unstealable	
+	format slot 18 of player with {@item18} named "{@item18-name}" with lore "{@item18-name}" to be unstealable
+	format slot 19 of player with {@item19} named "{@item19-name}" with lore "{@item19-name}" to be unstealable	
+	format slot 20 of player with {@item20} named "{@item20-name}" with lore "{@item20-name}" to be unstealable	
+	format slot 0 of player with {@item0} named "{@item0-name}" with lore "{@item0-name}" to close then run [execute player command "{@item0-cmd}"]
+	format slot 1 of player with {@item1} named "{@item1-name}" with lore "{@item1-name}" to close then run [execute player command "{@item1-cmd}"]
+	format slot 2 of player with {@item2} named "{@item2-name}" with lore "{@item2-name}" to close then run [execute player command "{@item2-cmd}"]
+	format slot 3 of player with {@item3} named "{@item3-name}" with lore "{@item3-name}" to close then run [execute player command "{@item3-cmd}"]	
+	format slot 4 of player with {@item4} named "{@item4-name}" with lore "{@item4-name}" to close then run [execute player command "{@item4-cmd}"]
+	format slot 5 of player with {@item5} named "{@item5-name}" with lore "{@item5-name}" to close then run [execute player command "{@item5-cmd}"]	
+	format slot 6 of player with {@item6} named "{@item6-name}" with lore "{@item6-name}" to close then run [execute player command "{@item6-cmd}"]
+	format slot 7 of player with {@item7} named "{@item7-name}" with lore "{@item7-name}" to close then run [execute player command "{@item7-cmd}"]	
+	format slot 8 of player with {@item8} named "{@item8-name}" with lore "{@item8-name}" to close then run [execute player command "{@item8-cmd}"]
+	format slot 9 of player with {@item9} named "{@item9-name}" with lore "{@item9-name}" to close then run [execute player command "{@item9-cmd}"]	
+	format slot 10 of player with {@item10} named "{@item10-name}" with lore "{@item10-name}" to close then run [execute player command "{@item10-cmd}"]
+	format slot 11 of player with {@item11} named "{@item11-name}" with lore "{@item11-name}" to close then run [execute player command "{@item11-cmd}"]	
+	format slot 12 of player with {@item12} named "{@item12-name}" with lore "{@item12-name}" to close then run [execute player command "{@item12-cmd}"]
+	format slot 13 of player with {@item13} named "{@item13-name}" with lore "{@item13-name}" to close then run [execute player command "{@item13-cmd}"]	
+	format slot 14 of player with {@item14} named "{@item14-name}" with lore "{@item14-name}" to close then run [execute player command "{@item14-cmd}"]
+	format slot 15 of player with {@item15} named "{@item15-name}" with lore "{@item15-name}" to close then run [execute player command "{@item15-cmd}"]	
+	format slot 16 of player with {@item16} named "{@item16-name}" with lore "{@item16-name}" to close then run [execute player command "{@item16-cmd}"]
+	format slot 17 of player with {@item17} named "{@item17-name}" with lore "{@item17-name}" to close then run [execute player command "{@item17-cmd}"]	
+	format slot 18 of player with {@item18} named "{@item18-name}" with lore "{@item18-name}" to close then run [execute player command "{@item18-cmd}"]
+	format slot 19 of player with {@item19} named "{@item19-name}" with lore "{@item19-name}" to close then run [execute player command "{@item19-cmd}"]	
+	format slot 20 of player with {@item20} named "{@item20-name}" with lore "{@item20-name}" to close then run [execute player command "{@item20-cmd}"]
+	
+on right click with {@lager}:
+	wait 10 tick
+	open chest with 6 rows named "{@lager-name}" to player
+	format slot 0 of player with {@litem0} named "{@litem0-name}" with lore "{@litem0-name}" to be unstealable
+	format slot 1 of player with {@litem1} named "{@litem1-name}" with lore "{@litem1-name}" to be unstealable
+	format slot 3 of player with {@litem3} named "{@litem3-name}" with lore "{@litem3-name}" to be unstealable	
+	format slot 4 of player with {@litem4} named "{@litem4-name}" with lore "{@litem4-name}" to be unstealable
+	format slot 5 of player with {@litem5} named "{@litem5-name}" with lore "{@litem5-name}" to be unstealable	
+	format slot 6 of player with {@litem6} named "{@litem6-name}" with lore "{@litem6-name}" to be unstealable
+	format slot 7 of player with {@litem7} named "{@litem7-name}" with lore "{@litem7-name}" to be unstealable
+	format slot 8 of player with {@litem8} named "{@litem8-name}" with lore "{@litem8-name}" to be unstealable
+	format slot 9 of player with {@litem9} named "{@litem9-name}" with lore "{@litem9-name}" to be unstealable
+	format slot 10 of player with {@litem10} named "{@litem10-name}" with lore "{@litem10-name}" to be unstealable
+	format slot 11 of player with {@litem11} named "{@litem11-name}" with lore "{@litem11-name}" to be unstealable
+	format slot 12 of player with {@litem12} named "{@litem12-name}" with lore "{@litem12-name}" to be unstealable
+	format slot 13 of player with {@litem13} named "{@litem13-name}" with lore "{@litem13-name}" to be unstealable	
+	format slot 14 of player with {@litem14} named "{@litem14-name}" with lore "{@litem14-name}" to be unstealable
+	format slot 15 of player with {@litem15} named "{@litem15-name}" with lore "{@litem15-name}" to be unstealable	
+	format slot 16 of player with {@litem16} named "{@litem16-name}" with lore "{@litem16-name}" to be unstealable
+	format slot 17 of player with {@litem17} named "{@litem17-name}" with lore "{@litem17-name}" to be unstealable	
+	format slot 18 of player with {@litem18} named "{@litem18-name}" with lore "{@litem18-name}" to be unstealable
+	format slot 19 of player with {@litem19} named "{@litem19-name}" with lore "{@litem19-name}" to be unstealable	
+	format slot 20 of player with {@litem20} named "{@litem20-name}" with lore "{@litem20-name}" to be unstealable
+	format slot 0 of player with {@litem0} named "{@litem0-name}" with lore "{@litem0-name}" to close then run [execute player command "{@litem0-cmd}"]
+	format slot 1 of player with {@litem1} named "{@litem1-name}" with lore "{@litem1-name}" to close then run [execute player command "{@litem1-cmd}"]
+	format slot 2 of player with {@litem2} named "{@litem2-name}" with lore "{@litem2-name}" to close then run [execute player command "{@litem2-cmd}"]
+	format slot 3 of player with {@litem3} named "{@litem3-name}" with lore "{@litem3-name}" to close then run [execute player command "{@litem3-cmd}"]	
+	format slot 4 of player with {@litem4} named "{@litem4-name}" with lore "{@litem4-name}" to close then run [execute player command "{@litem4-cmd}"]
+	format slot 5 of player with {@litem5} named "{@litem5-name}" with lore "{@litem5-name}" to close then run [execute player command "{@litem5-cmd}"]	
+	format slot 6 of player with {@litem6} named "{@litem6-name}" with lore "{@litem6-name}" to close then run [execute player command "{@litem6-cmd}"]
+	format slot 7 of player with {@litem7} named "{@litem7-name}" with lore "{@litem7-name}" to close then run [execute player command "{@litem7-cmd}"]	
+	format slot 8 of player with {@litem8} named "{@litem8-name}" with lore "{@litem8-name}" to close then run [execute player command "{@litem8-cmd}"]
+	format slot 9 of player with {@litem9} named "{@litem9-name}" with lore "{@litem9-name}" to close then run [execute player command "{@litem9-cmd}"]	
+	format slot 10 of player with {@litem10} named "{@litem10-name}" with lore "{@litem10-name}" to close then run [execute player command "{@litem10-cmd}"]
+	format slot 11 of player with {@litem11} named "{@litem11-name}" with lore "{@litem11-name}" to close then run [execute player command "{@litem11-cmd}"]	
+	format slot 12 of player with {@litem12} named "{@litem12-name}" with lore "{@litem12-name}" to close then run [execute player command "{@litem12-cmd}"]
+	format slot 13 of player with {@litem13} named "{@litem13-name}" with lore "{@litem13-name}" to close then run [execute player command "{@litem13-cmd}"]	
+	format slot 14 of player with {@litem14} named "{@litem14-name}" with lore "{@litem14-name}" to close then run [execute player command "{@litem14-cmd}"]
+	format slot 15 of player with {@litem15} named "{@litem15-name}" with lore "{@litem15-name}" to close then run [execute player command "{@litem15-cmd}"]	
+	format slot 16 of player with {@litem16} named "{@litem16-name}" with lore "{@litem16-name}" to close then run [execute player command "{@litem16-cmd}"]
+	format slot 17 of player with {@litem17} named "{@litem17-name}" with lore "{@litem17-name}" to close then run [execute player command "{@litem17-cmd}"]	
+	format slot 18 of player with {@litem18} named "{@litem18-name}" with lore "{@litem18-name}" to close then run [execute player command "{@litem18-cmd}"]
+	format slot 19 of player with {@litem19} named "{@litem19-name}" with lore "{@litem19-name}" to close then run [execute player command "{@litem19-cmd}"]	
+	format slot 20 of player with {@litem20} named "{@litem20-name}" with lore "{@litem20-name}" to close then run [execute player command "{@litem20-cmd}"]
+	
+
+	
+command /sinv [<text>]:
+    permission: "inv.speichern"
+    permission message: {@permisionmessage} ►inv.speichern ♛
+    aliases: /si
+    trigger:
+        if arg 1 is not set:
+            make player execute command "hilfe"
+            stop
+        add arg 1 to {Inventory.%player%::*}
+        set {_count} to 0
+        loop 36 times:
+            set {inv.%player%.%{_count}%.%arg 1%} to slot {_count} of player's inventory
+            add 1 to {_count}
+        set {inv.%player%.helmet.%arg 1%} to player's helmet
+        set {inv.%player%.chest.%arg 1%} to player's chestplate
+        set {inv.%player%.legs.%arg 1%} to player's leggings
+        set {inv.%player%.feet.%arg 1%} to player's boots
+        message "{@prefix} {@colorcode}Inventar unter Inventar %arg 1% gespeichert"
+		
+command /delinv [<text>]:
+    permission: "essentials.clearinventory"
+    permission message: {@permisionmessage} ►essentials.clearinventory ♛
+    aliases: /invl
+    trigger:
+        if arg 1 is not set:
+            make player execute command "clear"
+            set slot 7 of player to {@lager} named "{@lager-name}"
+            format slot 7 of player with {@lager} named "{@lager-name}" with lore "{@lager-lore}" to be unstealable
+            wait 10 tick
+            set slot 8 of player to {@guiitem} named "{@gui-name}"
+            format slot 8 of player with {@guiitem} named "{@gui-name}" with lore "{@gui-lore}" to be unstealable
+            stop
+        if arg 1 is "all":
+            make player execute command "clear"
+            set slot 7 of player to {@lager} named "{@lager-name}"
+            format slot 7 of player with {@lager} named "{@lager-name}" with lore "{@lager-lore}" to be unstealable
+            wait 10 tick
+            set slot 8 of player to {@guiitem} named "{@gui-name}"
+            format slot 8 of player with {@guiitem} named "{@gui-name}" with lore "{@gui-lore}" to be unstealable
+            message "{@prefix} {@colorcode}Dein Invetar wurde komplett gelöscht"
+            stop
+        
+		
+command /mcgi [<text>]:
+  trigger:    
+    message "&f&l••••••••••••••••••••••••••••••••••••••••••••••••••••••••"
+    message "&b    ▶This skript is by SilentWolf◀"
+    message "&e feel free to share this skript with your Friends"
+    message " http://www.zauschcraft.de"
+    message " Source: https://github.com/alugilak/deluxmenu-script-addon "
+    message "&b          ✩✩✩✩ Version 1.3  ✩✩✩✩"
+    message "&f&l••••••••••••••••••••••••••••••••••••••••••••••••••••••••"
+	
+command /iwechsel [<text>]:
+    permission: "inv.wechsel"
+    permission message: "{@permisionmessage}" ►inv.wechsel ♛
+    aliases: /inventar
+    trigger:
+        if arg 1 is not set: 
+            diameter of {Inventory.%player%::*} is 0:
+                message "{@prefix} {@colorcode}Du hast keine Inventare gesetzt!."
+                stop
+            else:
+                message "{@prefix} {@colorcode}Inventories:"
+                message "{@colorcode}%{Inventory.%player%::*}%"
+                stop
+        if arg 1 is "ihilfe":
+            message "{@prefix} {@version} {@highlightcolor}Hilfe Menü"
+            message "{@colorcode}/sinv <name> - {@highlightcolor}Das aktuelle Inventar gespeichert."
+            message "{@colorcode}/inv <name> - {@highlightcolor}Dein Inventar wurde gewechselt."
+            message "{@colorcode}/delinv <name/all> - {@highlightcolor}Lösche Inventar nach Name oder alle."
+            stop
+        set {_count} to 0
+        loop 36 times:
+            set slot {_count} of player's inventory to {inv.%player%.%{_count}%.%arg 1%}
+            add 1 to {_count}
+        set the helmet of player to {inv.%player%.helmet.%arg 1%}
+        set the chestplate of player to {inv.%player%.chest.%arg 1%}
+        set the leggings of player to {inv.%player%.legs.%arg 1%}
+        set the boots of player to {inv.%player%.feet.%arg 1%}
+        message "{@prefix} {@colorcode}Du hast zu Inventar %arg 1%. gewechselt"
+        stop	
+log out:	
+	set slot 7 of player to {@clear} 
+	wait 10 tick
+	set slot 8 of player to {@clear} named ""
+	
+	
