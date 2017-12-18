@@ -5,100 +5,100 @@
 #-------------------------------------------------Bitte nur die Optionen ändern damit das Script weiter funktioniert------------------------------------------------------------------------#
 
 options:
-	version: &1.4
+	version: &1.5
 	
-	prefix: &7[&3Inventar Erweiterung&7]
+	prefix: &3Inventar Erweiterung
     
 	colorcode: &e
     
 	highlightcolor: &9
   
-	permisionmessage: {@prefix} {@colorcode}Dir fehlt die Berechtigung.
+	permisionmessage: &3Inventar Erweiterung:  &4Dir fehlt die Berechtigung.
 
 	litem0: red wool
 	litem0-name: &4In Inventar 1 speichern		
 	litem0-slot: 0
-	litem0-cmd: sinv 1
+	litem0-cmd: setinv 1
 	litem1: chest
 	litem1-name: &2Lade Inventar 1 	
 	litem1-slot: 1
-	litem1-cmd: iwechsel 1
+	litem1-cmd: setinventar 1
 	litem2: red wool
 	litem2-name: &4In Inventar 2 speichern	
 	litem2-slot: 2
-	litem2-cmd: sinv 2
+	litem2-cmd: setinv 2
 	litem3: chest
 	litem3-name: &2Lade Inventar 2	
 	litem3-slot: 3
-	litem3-cmd: iwechsel 2
+	litem3-cmd: setinventar 2
 	litem4: red wool
 	litem4-name: &4In Inventar 3 speichern	
 	litem4-slot: 4
-	litem4-cmd: sinv 3
+	litem4-cmd: setinv 3
 	litem5: chest
 	litem5-name: &2Lade Inventar 3
 	litem5-slot: 5
-	litem5-cmd: iwechsel 3
+	litem5-cmd: setinventar 3
 	litem6: red wool
 	litem6-name: &4In Inventar 4 speichern 	
 	litem6-slot: 6
-	litem6-cmd: sinv 4
+	litem6-cmd: setinv 4
 	litem7: chest
 	litem7-name: &2Lade Inventar	4 
 	litem7-slot: 7
-	litem7-cmd: iwechsel 4
+	litem7-cmd: setinventar 4
 	litem8: red wool
 	litem8-name: &2Lade Inventar 5 speichern	
 	litem8-slot: 8
-	litem8-cmd: sinv 5
+	litem8-cmd: setinv 5
 	litem9: chest
 	litem9-name: &2Lade Inventar 5	
 	litem9-slot: 9
-	litem9-cmd: iwechsel 5
+	litem9-cmd: setinventar 5
 	litem10: red wool
 	litem10-name: &4In Inventar 6 speichern	
 	litem10-slot: 10
-	litem10-cmd: sinv 6
+	litem10-cmd: setinv 6
 	litem11: chest
 	litem11-name: &2Lade Inventar 6	
 	litem11-slot: 11
-	litem11-cmd: iwechsel 6
+	litem11-cmd: setinventar 6
 	litem12: red wool
 	litem12-name: &4In Inventar 7 speichern	
 	litem12-slot: 12
-	litem12-cmd: sinv 7
+	litem12-cmd: setinv 7
 	litem13: chest
 	litem13-name: &2Lade Inventar 7	
 	litem13-slot: 13
-	litem13-cmd: iwechsel 7
+	litem13-cmd: setinventar 7
 	litem14: red wool
 	litem14-name: &4In Inventar 8 speichern	
 	litem14-slot: 14
-	litem14-cmd: sinv 8
+	litem14-cmd: setinv 8
 	litem15: chest
 	litem15-name: &2Lade Inventar 8	
 	litem15-slot: 15
-	litem15-cmd: iwechsel 8
+	litem15-cmd: setinventar 8
 	litem16: red wool
 	litem16-name: &4In Inventar 9 speichern	
 	litem16-slot: 16
-	litem16-cmd: sinv 9
+	litem16-cmd: setinv 9
 	litem17: chest
 	litem17-name: &2Lade Inventar 9	
 	litem17-slot: 17
-	litem17-cmd: iwechsel 9
+	litem17-cmd: setinventar 9
 	litem18: red wool
 	litem18-name: &4In Inventar 10 speichern	
 	litem18-slot: 18
-	litem18-cmd: sinv 10
+	litem18-cmd: setinv 10
 	litem19: chest
 	litem19-name: &2Lade Inventar 10	
 	litem19-slot: 19
-	litem19-cmd: iwechsel 10
+	litem19-cmd: setinventar 10
 	litem20: barrier
 	litem20-name: &6Aktuelles Inventar Löschen	
 	litem20-slot: 20
-	litem20-cmd: invl
+	litem20-cmd: setinvdel
 	
 	
 	item0: enchanted book
@@ -316,10 +316,10 @@ on right click with {@lager}:
 	
 
 	
-command /sinv [<text>]:
-    permission: "inv.speichern"
-    permission message: "{@permisionmessage}"
-    aliases: /si
+command /setinv [<text>]:
+    permission: inv.set
+    permission message: {@permisionmessage} ►inv.set ♛
+    aliases: /setinv
     trigger:
         if arg 1 is not set:
             make player execute command "hilfe"
@@ -336,9 +336,9 @@ command /sinv [<text>]:
         message "{@prefix} {@colorcode}Inventar unter Inventar %arg 1% gespeichert"
 		
 command /delinv [<text>]:
-    permission: "essentials.clearinventory"
-    permission message: "{@permisionmessage}"
-    aliases: /invl
+    permission: invdel.set
+    permission message: {@permisionmessage} ►invdel.set ♛
+    aliases: /setinvdel
     trigger:
         if arg 1 is not set:
             make player execute command "clear"
@@ -348,7 +348,7 @@ command /delinv [<text>]:
             set slot 8 of player to {@guiitem} named "{@gui-name}"
             format slot 8 of player with {@guiitem} named "{@gui-name}" with lore "{@gui-lore}" to be unstealable
             stop
-        if arg 1 is "all":
+        if arg 1 is set:
             make player execute command "clear"
             set slot 7 of player to {@lager} named "{@lager-name}"
             format slot 7 of player with {@lager} named "{@lager-name}" with lore "{@lager-lore}" to be unstealable
@@ -356,23 +356,12 @@ command /delinv [<text>]:
             set slot 8 of player to {@guiitem} named "{@gui-name}"
             format slot 8 of player with {@guiitem} named "{@gui-name}" with lore "{@gui-lore}" to be unstealable
             message "{@prefix} {@colorcode}Dein Invetar wurde komplett gelöscht"
-            stop
-        
-		
-command /mcgi [<text>]:
-  trigger:    
-    message "&f&l••••••••••••••••••••••••••••••••••••••••••••••••••••••••"
-    message "&b    ▶This skript is by SilentWolf◀"
-    message "&e feel free to share this skript with your Friends"
-    message " http://www.zauschcraft.de"
-    message " Source: https://github.com/alugilak/deluxmenu-script-addon "
-    message "&b          ✩✩✩✩ Version 1.3  ✩✩✩✩"
-    message "&f&l••••••••••••••••••••••••••••••••••••••••••••••••••••••••"
+            stop  
 	
-command /iwechsel [<text>]:
-    permission: "inv.wechsel"
-    permission message: "{@permisionmessage}"
-    aliases: /inventar
+command /rinventar [<text>]:
+    permission: inventar.set
+    permission message: "{@permisionmessage}" ►inventar.set ♛
+    aliases: /setinventar
     trigger:
         if arg 1 is not set: 
             diameter of {Inventory.%player%::*} is 0:
@@ -382,9 +371,9 @@ command /iwechsel [<text>]:
                 message "{@prefix} {@colorcode}Inventories:"
                 message "{@colorcode}%{Inventory.%player%::*}%"
                 stop
-        if arg 1 is "ihilfe":
+        if arg 1 is "hilfe":
             message "{@prefix} {@version} {@highlightcolor}Hilfe Menü"
-            message "{@colorcode}/sinv <name> - {@highlightcolor}Das aktuelle Inventar gespeichert."
+            message "{@colorcode}/setinv <name> - {@highlightcolor}Das aktuelle Inventar gespeichert."
             message "{@colorcode}/inv <name> - {@highlightcolor}Dein Inventar wurde gewechselt."
             message "{@colorcode}/delinv <name/all> - {@highlightcolor}Lösche Inventar nach Name oder alle."
             stop
@@ -398,6 +387,17 @@ command /iwechsel [<text>]:
         set the boots of player to {inv.%player%.feet.%arg 1%}
         message "{@prefix} {@colorcode}Du hast zu Inventar %arg 1%. gewechselt"
         stop	
+		
+command /mcgi [<text>]:
+  trigger:    
+    message "&f&l••••••••••••••••••••••••••••••••••••••••••••••••••••••••"
+    message "&b    ▶This skript is by SilentWolf◀"
+    message "&e feel free to share this skript with your Friends"
+    message " http://www.zauschcraft.de"
+    message " Source: https://github.com/alugilak/deluxmenu-script-addon "
+    message "&b          ✩✩✩✩ Version 1.3  ✩✩✩✩"
+    message "&f&l••••••••••••••••••••••••••••••••••••••••••••••••••••••••"
+	
 log out:	
 	set slot 7 of player to {@clear} 
 	wait 10 tick
