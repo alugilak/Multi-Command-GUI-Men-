@@ -5,16 +5,20 @@
 #-------------------------------------------------Bitte nur die Optionen ändern damit das Script weiter funktioniert------------------------------------------------------------------------#
 
 options:
-	version: &1.5
-	
+	version: &1.6							#aktuelle Version
+
+#-------------------------------------------Einstellungen für Inventarerweiterung----------------------------------	
 	prefix: &3Inventar Erweiterung
     
 	colorcode: &e
     
 	highlightcolor: &9
   
-	permisionmessage: &3Inventar Erweiterung:  &4Dir fehlt die Berechtigung.
-
+	permisionmessage: &3Inventar Erweiterung:  &4Dir fehlt die Berechtigung.												#Berechtigungsnachricht Inventarerweiterung
+	
+	permissionpn: &3Privatnachricht System:  &4Dir fehlt die Berechtigung eine Privatnachricht zu verschicken.				#Berechtigung Privatnachrichtsystem
+	permissionpna: &3Privatnachricht System:  &4Dir fehlt die Berechtigung auf eine Privatnachricht zu antworten!			#Berechtigung Privatnachrichtsystem
+	
 	litem0: red wool
 	litem0-name: &4In Inventar 1 speichern		
 	litem0-slot: 0
@@ -99,8 +103,18 @@ options:
 	litem20-name: &6Aktuelles Inventar Löschen	
 	litem20-slot: 20
 	litem20-cmd: setinvdel
+	litem48: map
+	litem48-name: AFK gehen
+	litem48-lore: setze und deaktiviere AFK 	
+	litem48-slot: 48 
+	litem48-cmd: afk
+	litem49: written book
+	litem49-name: &eDein Geld anzeigen
+	litem49-lore: zeigt deinen aktuellen Kontostand an	
+	litem49-slot: 49
+	litem49-cmd: fe
 	
-	
+#-----------------------------------------------------------------------Einstellungen für Custom Command Gui---------------------------------------	
 	item0: enchanted book
 	item0-name: &aTeleporter Auswahl		
 	item0-slot: 0
@@ -185,9 +199,11 @@ options:
 	item20-name: noch nicht belegt	
 	item20-slot: 20
 	item20-cmd: noch nicht belegt
-	
+#----------------------------------------------------------------------------------------------------Einstellungen Header & Footer Text------------------------------------------------	
 	header: &eWillkommen auf Zauschcraft &2%player% \\n &eSchau mal im Forum Vorbei unter: http://www.zauschcraft.de/forum/				#neue Zeile immer mit "Willkommen auf Zauschcraftß\\n Dies ist die Zeile 2"﻿	
 	footer: &ehttp://www.zauschcraft.de
+	
+#--------------------------------------------------------------------------------------Einstellungen Chatbegrüßung-----------------------------------------------------------------------	
 	contxt0: &9☣☣☣☣☣☣☣☣☣☣☣☣&c&lMulti Command GUI&9☣☣☣☣☣☣☣☣☣☣☣☣☣☣
 	contxt2: &eSchön das du wieder hier bist &2%player%!
 	contxt3: &eSchau mal im Forum Vorbei unter: http://www.zauschcraft.de/forum/
@@ -196,8 +212,8 @@ options:
 	contxt5: &c&lIn dein Inventar wurde Das Reiseinventar abgelegt
 	contxt6: &9☣☣☣☣☣☣☣☣☣☣☣☣&c&lMulti Command GUI&9☣☣☣☣☣☣☣☣☣☣☣☣☣☣
 	
-	clear: air
-	
+	clear: air #Einstellungen Slots für Guis nach logout zu leeren
+#---------------------------------------------------------------------------------------------------Einstellungen für Guiitems-----------------------------------------------------	
 	guiitem: enchanted book
 	gui-name: &eMulti Command GUI
 	gui-lore: &4Zauschcraft Multi Command Gui
@@ -207,7 +223,7 @@ options:
 	lager-name: &eReiselager
 	lager-lore: &2Dies ist eine Transportbox welche dein Inventar erweitert!
 	lager-cmd: TB
-
+	#--------------------------------------------------------------------------------------------Bis hier geht das konfigurierbare---------------------------------------------------
 on join:
 	set tab header to "{@header}" and footer to "{@footer}" for player
 	wait 10 tick
@@ -292,6 +308,8 @@ on right click with {@lager}:
 	format slot 18 of player with {@litem18} named "{@litem18-name}" with lore "{@litem18-name}" to be unstealable
 	format slot 19 of player with {@litem19} named "{@litem19-name}" with lore "{@litem19-name}" to be unstealable	
 	format slot 20 of player with {@litem20} named "{@litem20-name}" with lore "{@litem20-name}" to be unstealable
+	format slot 48 of player with {@litem48} named "{@litem48-name}" with lore "{@litem48-lore}" to be unstealable
+	format slot 49 of player with {@litem49} named "{@litem49-name}" with lore "{@litem49-lore}" to be unstealable
 	format slot 0 of player with {@litem0} named "{@litem0-name}" with lore "{@litem0-name}" to close then run [execute player command "{@litem0-cmd}"]
 	format slot 1 of player with {@litem1} named "{@litem1-name}" with lore "{@litem1-name}" to close then run [execute player command "{@litem1-cmd}"]
 	format slot 2 of player with {@litem2} named "{@litem2-name}" with lore "{@litem2-name}" to close then run [execute player command "{@litem2-cmd}"]
@@ -313,7 +331,8 @@ on right click with {@lager}:
 	format slot 18 of player with {@litem18} named "{@litem18-name}" with lore "{@litem18-name}" to close then run [execute player command "{@litem18-cmd}"]
 	format slot 19 of player with {@litem19} named "{@litem19-name}" with lore "{@litem19-name}" to close then run [execute player command "{@litem19-cmd}"]	
 	format slot 20 of player with {@litem20} named "{@litem20-name}" with lore "{@litem20-name}" to close then run [execute player command "{@litem20-cmd}"]
-	
+	format slot 48 of player with {@litem48} named "{@litem48-name}" with lore "{@litem48-lore}" to close then run [execute player command "{@litem48-cmd}"]
+	format slot 49 of player with {@litem49} named "{@litem49-name}" with lore "{@litem49-lore}" to close then run [execute player command "{@litem49-cmd}"]
 
 	
 command /setinv [<text>]:
@@ -360,7 +379,7 @@ command /delinv [<text>]:
 	
 command /rinventar [<text>]:
     permission: inventar.set
-    permission message: "{@permisionmessage}" ►inventar.set ♛
+    permission message: {@permisionmessage} ►inventar.set ♛
     aliases: /setinventar
     trigger:
         if arg 1 is not set: 
@@ -388,7 +407,7 @@ command /rinventar [<text>]:
         message "{@prefix} {@colorcode}Du hast zu Inventar %arg 1%. gewechselt"
         stop	
 		
-command /mcgi [<text>]:
+command /mcg [<text>]:
   trigger:    
     message "&f&l••••••••••••••••••••••••••••••••••••••••••••••••••••••••"
     message "&b    ▶This skript is by SilentWolf◀"
@@ -397,6 +416,29 @@ command /mcgi [<text>]:
     message " Source: https://github.com/alugilak/deluxmenu-script-addon "
     message "&b          ✩✩✩✩ Version 1.3  ✩✩✩✩"
     message "&f&l••••••••••••••••••••••••••••••••••••••••••••••••••••••••"
+
+command /pn <player> <text>:
+	permission: pn.send
+	permission message: {@permissionpn} ►pn.send ♛
+	aliases: /sendpn
+	description: Privatnachricht an anderen Spieler
+	usage: /pns <player> <message>
+	aliases: /pm
+	trigger:
+		set {chat.private.reply.%player%} to arg 1
+		set {chat.private.reply.%arg 1%} to player
+		send "&c[PRIVATNACHRICHT] &azu: %arg 1% &e->&c %arg 2%" to player
+		send "&c[PRIVATNACHRICHT] &evon: %player% &e->&c %arg 2%" to arg 1
+
+command /pna <text>:	
+	permission: pna.send
+	permission message: {@permissionpna} ►pna.send ♛
+	description: Reply command.
+	usage: /pnas <message>
+	aliases: /pas
+	trigger:
+		send "&c[PRIVATNACHRICHT] &azu: %{chat.private.reply.%player%}% &e->&c %arg 1%" to player
+		send "&c[PRIVATNACHRICHT] &evon: %player% &e->&c %arg 1%" to {chat.private.reply.%player%}
 	
 log out:	
 	set slot 7 of player to {@clear} 
