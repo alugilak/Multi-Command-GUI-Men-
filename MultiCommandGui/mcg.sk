@@ -1,11 +1,29 @@
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#
-# 					Skritp bei SilentWolf und darf jederzeit geändert und weitergegeben werden. Bitte Ideegeber Therniau in dein Skript mit eingeben!										#
-#																							Version 1.3																						#
+# 					GNU AFFERO GENERAL PUBLIC LICENSE 																		Version 3, 19 November 2007										#
+#																							Version 1.7		Author:SilentWolf																#
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#
 #-------------------------------------------------Bitte nur die Optionen ändern damit das Script weiter funktioniert------------------------------------------------------------------------#
 
 options:
-	version: &1.6							#aktuelle Version
+	version: &1.7							#aktuelle Version
+	
+#-------------------------------------------Einstellungen erster Login----------------------------------------------
+	farbcode: &e 
+	
+	teleport: hub
+
+	firstjoin: golden apple
+	
+	join: golden apple
+
+	name: Zauberapfel
+
+	lore: Loginbelohnung
+
+	belohungsnachricht: Als Dankeschön ein Geschenk erhalten.
+	
+	tagesbelohnung: Als Tagesbelohnung hast du "{@join}" erhalten
+
 
 #-------------------------------------------Einstellungen für Inventarerweiterung----------------------------------	
 	prefix: &3Inventar Erweiterung
@@ -199,18 +217,43 @@ options:
 	item20-name: noch nicht belegt	
 	item20-slot: 20
 	item20-cmd: noch nicht belegt
-#----------------------------------------------------------------------------------------------------Einstellungen Header & Footer Text------------------------------------------------	
+#----------------------------------------------------------------------------------------------------Einstellungen Tab &Header & Footer Text------------------------------------------------	
+	farbcode1: &0 	#BLACK
+	farbcode2: &1 	#DARK BLUE
+	farbcode3: &2 	#DARK GREEN
+	farbcode4: &3 	#DARK AQUA
+	farbcode5: &4 	#DARK RED
+	farbcode6: &5 	#DARK PURPLE
+	farbcode7: &6 	#GOLD
+	farbcode8: &7 	#GRAY
+	farbcode9: &8 	#DARK GRAY
+	farbcode10: &9 	#INDIGO
+	farbcode11: &A 	#GREEN
+	farbcode12: &B 	#AQUA
+	farbcode13: &C 	#RED
+	farbcode14: &D 	#PINK
+	farbcode15: &E 	#YELLOW
+	farbcode16: &F 	#WHITE
+	farbcode17: &M 	#STRIKE THROUGH
+	farbcode18: &N 	#UNDERLINED
+	farbcode19: &L 	#BOLD
+	farbcode20: &K 	#RANDOM
+	farbcode21: &O 	#ITALIC
+	farbcode22: &c&l #FettROT
+
+	
+	tabname: ZauschCraft	
+	tabnachricht1: Deine Tabliste ist nun aktiviert.	
 	header: &eWillkommen auf Zauschcraft &2%player% \\n &eSchau mal im Forum Vorbei unter: http://www.zauschcraft.de/forum/				#neue Zeile immer mit "Willkommen auf Zauschcraftß\\n Dies ist die Zeile 2"﻿	
 	footer: &ehttp://www.zauschcraft.de
 	
 #--------------------------------------------------------------------------------------Einstellungen Chatbegrüßung-----------------------------------------------------------------------	
 	contxt0: &9☣☣☣☣☣☣☣☣☣☣☣☣&c&lMulti Command GUI&9☣☣☣☣☣☣☣☣☣☣☣☣☣☣
-	contxt2: &eSchön das du wieder hier bist &2%player%!
-	contxt3: &eSchau mal im Forum Vorbei unter: http://www.zauschcraft.de/forum/
-	contxt1: &6Willkommen &9%player% 
-	contxt4: &c&lIn dein Inventar wurde das Multi Command GUI Item abgelegt
-	contxt5: &c&lIn dein Inventar wurde Das Reiseinventar abgelegt
-	contxt6: &9☣☣☣☣☣☣☣☣☣☣☣☣&c&lMulti Command GUI&9☣☣☣☣☣☣☣☣☣☣☣☣☣☣
+	contxt1: &eSchön das du wieder hier bist &2%player%!
+	contxt2: &eSchau mal im Forum Vorbei unter: http://www.zauschcraft.de/forum/	
+	contxt3: &c&4In dein Inventar wurde das Multi Command GUI Item abgelegt
+	contxt4: &c&4In dein Inventar wurde Das Reiseinventar abgelegt
+	contxt5: &9☣☣☣☣☣☣☣☣☣☣☣☣&c&lMulti Command GUI&9☣☣☣☣☣☣☣☣☣☣☣☣☣☣
 	
 	clear: air #Einstellungen Slots für Guis nach logout zu leeren
 #---------------------------------------------------------------------------------------------------Einstellungen für Guiitems-----------------------------------------------------	
@@ -225,14 +268,20 @@ options:
 	lager-cmd: TB
 	#--------------------------------------------------------------------------------------------Bis hier geht das konfigurierbare---------------------------------------------------
 on join:
-	set tab header to "{@header}" and footer to "{@footer}" for player
 	wait 10 tick
 	set slot 7 of player to {@lager} named "{@lager-name}"
 	format slot 7 of player with {@lager} named "{@lager-name}" with lore "{@lager-lore}" to be unstealable
 	wait 10 tick
 	set slot 8 of player to {@guiitem} named "{@gui-name}"
 	format slot 8 of player with {@guiitem} named "{@gui-name}" with lore "{@gui-lore}" to be unstealable
+	set slot 6 of player to {@join} named "{@name}"
+	format slot 6 of player with {@join} named "{@name}" with lore "{@lore}" to close then run [execute player command "{@teleport}"]
+	execute player command "{@teleport}"
+	set the player's tablist name to "&4{tabname} %player%"
+	set tab header to "{@header}" and footer to "{@footer}" for player
 	wait 10 second
+	broadcast "{@farbcode19}%player% {@farbcode7}hat {@belohungsnachricht}"
+	message "{@tabnachricht1}"	
 	message "{@contxt0}" 
 	message "{@contxt1}" 
 	message "{@contxt2}" 
@@ -240,6 +289,13 @@ on join:
 	message "{@contxt4}"
 	message "{@contxt5}"
 
+	
+on first join:
+	set slot 6 of player to {@firstjoin} named "{@name}"
+	format slot 6 of player with {@firstjoin} named "{@name}" with lore "{@lore}" to close then run [execute player command "{@teleport}"]
+	broadcast "hat {@farbcode}{@belohungsnachricht}"
+	
+	
 on right click with {@guiitem}:
 	wait 5 tick
 	open chest with 6 rows named "{@gui-name}" to player
@@ -427,8 +483,8 @@ command /pn <player> <text>:
 	trigger:
 		set {chat.private.reply.%player%} to arg 1
 		set {chat.private.reply.%arg 1%} to player
-		send "&c[PRIVATNACHRICHT] &azu: %arg 1% &e->&c %arg 2%" to player
-		send "&c[PRIVATNACHRICHT] &evon: %player% &e->&c %arg 2%" to arg 1
+		send "&9[PRIVATNACHRICHT] &azu: %arg 1% &e->&c %arg 2%" to player
+		send "&5[PRIVATNACHRICHT] &evon: %player% &e->&c %arg 2%" to arg 1
 
 command /pna <text>:	
 	permission: pna.send
