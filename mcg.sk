@@ -1,106 +1,143 @@
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#
-# 					Skritp bei SilentWolf und darf jederzeit geändert und weitergegeben werden. Bitte Ideegeber Therniau in dein Skript mit eingeben!										#
-#																							Version 1.3																						#
+# 					GNU AFFERO GENERAL PUBLIC LICENSE 																		Version 3, 19 November 2007										#
+#																							Version 2.0		Author:SilentWolf																#
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#
 #-------------------------------------------------Bitte nur die Optionen ändern damit das Script weiter funktioniert------------------------------------------------------------------------#
 
 options:
-	version: &1.4
+	version: &2.0							#aktuelle Version
 	
+#-------------------------------------------Einstellungen erster Login----------------------------------------------
+	farbcode: &e 
+	
+	teleport: hub
+
+	firstjoin: golden apple
+	
+	join: golden apple
+
+	name: Zauberapfel
+
+	lore: Loginbelohnung
+
+	belohungsnachricht: Als Dankeschön ein Geschenk erhalten.
+	
+	tagesbelohnung: Als Tagesbelohnung hast du "{@join}" erhalten
+
+
+#-------------------------------------------Einstellungen für Inventarerweiterung----------------------------------	
 	prefix: &3Inventar Erweiterung
     
 	colorcode: &e
     
 	highlightcolor: &9
   
-	permisionmessage: &3Inventar Erweiterung:  &4Dir fehlt die Berechtigung.
-
+	permisionmessage: &3Inventar Erweiterung:  &4Dir fehlt die Berechtigung.												#Berechtigungsnachricht Inventarerweiterung
+	
+	permissionpn: &3Privatnachricht System:  &4Dir fehlt die Berechtigung eine Privatnachricht zu verschicken.				#Berechtigung Privatnachrichtsystem
+	permissionpna: &3Privatnachricht System:  &4Dir fehlt die Berechtigung auf eine Privatnachricht zu antworten!			#Berechtigung Privatnachrichtsystem
+	
 	litem0: red wool
 	litem0-name: &4In Inventar 1 speichern		
 	litem0-slot: 0
-	litem0-cmd: sinv 1
+	litem0-cmd: setinv 1
 	litem1: chest
 	litem1-name: &2Lade Inventar 1 	
 	litem1-slot: 1
-	litem1-cmd: iwechsel 1
+	litem1-cmd: setinventar 1
 	litem2: red wool
 	litem2-name: &4In Inventar 2 speichern	
 	litem2-slot: 2
-	litem2-cmd: sinv 2
+	litem2-cmd: setinv 2
 	litem3: chest
 	litem3-name: &2Lade Inventar 2	
 	litem3-slot: 3
-	litem3-cmd: iwechsel 2
+	litem3-cmd: setinventar 2
 	litem4: red wool
 	litem4-name: &4In Inventar 3 speichern	
 	litem4-slot: 4
-	litem4-cmd: sinv 3
+	litem4-cmd: setinv 3
 	litem5: chest
 	litem5-name: &2Lade Inventar 3
 	litem5-slot: 5
-	litem5-cmd: iwechsel 3
+	litem5-cmd: setinventar 3
 	litem6: red wool
 	litem6-name: &4In Inventar 4 speichern 	
 	litem6-slot: 6
-	litem6-cmd: sinv 4
+	litem6-cmd: setinv 4
 	litem7: chest
 	litem7-name: &2Lade Inventar	4 
 	litem7-slot: 7
-	litem7-cmd: iwechsel 4
+	litem7-cmd: setinventar 4
 	litem8: red wool
 	litem8-name: &2Lade Inventar 5 speichern	
 	litem8-slot: 8
-	litem8-cmd: sinv 5
+	litem8-cmd: setinv 5
 	litem9: chest
 	litem9-name: &2Lade Inventar 5	
 	litem9-slot: 9
-	litem9-cmd: iwechsel 5
+	litem9-cmd: setinventar 5
 	litem10: red wool
 	litem10-name: &4In Inventar 6 speichern	
 	litem10-slot: 10
-	litem10-cmd: sinv 6
+	litem10-cmd: setinv 6
 	litem11: chest
 	litem11-name: &2Lade Inventar 6	
 	litem11-slot: 11
-	litem11-cmd: iwechsel 6
+	litem11-cmd: setinventar 6
 	litem12: red wool
 	litem12-name: &4In Inventar 7 speichern	
 	litem12-slot: 12
-	litem12-cmd: sinv 7
+	litem12-cmd: setinv 7
 	litem13: chest
 	litem13-name: &2Lade Inventar 7	
 	litem13-slot: 13
-	litem13-cmd: iwechsel 7
+	litem13-cmd: setinventar 7
 	litem14: red wool
 	litem14-name: &4In Inventar 8 speichern	
 	litem14-slot: 14
-	litem14-cmd: sinv 8
+	litem14-cmd: setinv 8
 	litem15: chest
 	litem15-name: &2Lade Inventar 8	
 	litem15-slot: 15
-	litem15-cmd: iwechsel 8
+	litem15-cmd: setinventar 8
 	litem16: red wool
 	litem16-name: &4In Inventar 9 speichern	
 	litem16-slot: 16
-	litem16-cmd: sinv 9
+	litem16-cmd: setinv 9
 	litem17: chest
 	litem17-name: &2Lade Inventar 9	
 	litem17-slot: 17
-	litem17-cmd: iwechsel 9
+	litem17-cmd: setinventar 9
 	litem18: red wool
 	litem18-name: &4In Inventar 10 speichern	
 	litem18-slot: 18
-	litem18-cmd: sinv 10
+	litem18-cmd: setinv 10
 	litem19: chest
 	litem19-name: &2Lade Inventar 10	
 	litem19-slot: 19
-	litem19-cmd: iwechsel 10
+	litem19-cmd: setinventar 10
 	litem20: barrier
 	litem20-name: &6Aktuelles Inventar Löschen	
 	litem20-slot: 20
-	litem20-cmd: invl
+	litem20-cmd: setinvdel
+	litem48: map
+	litem48-name: AFK gehen
+	litem48-lore: setze und deaktiviere AFK 	
+	litem48-slot: 48 
+	litem48-cmd: afk
+	litem49: written book
+	litem49-name: &eDein Geld anzeigen
+	litem49-lore: zeigt deinen aktuellen Kontostand an	
+	litem49-slot: 49
+	litem49-cmd: fe
+	litem47: map
+	litem47-name: Emote
+	litem47-lore: lachender Emote  	
+	litem47-slot: 47 
+	litem47-cmd: say ""&c&e😄
 	
-	
+#-----------------------------------------------------------------------Einstellungen für Custom Command Gui---------------------------------------	
 	item0: enchanted book
 	item0-name: &aTeleporter Auswahl		
 	item0-slot: 0
@@ -185,38 +222,85 @@ options:
 	item20-name: noch nicht belegt	
 	item20-slot: 20
 	item20-cmd: noch nicht belegt
+#----------------------------------------------------------------------------------------------------Einstellungen Tab &Header & Footer Text------------------------------------------------	
+	farbcode1: &0 	#BLACK
+	farbcode2: &1 	#DARK BLUE
+	farbcode3: &2 	#DARK GREEN
+	farbcode4: &3 	#DARK AQUA
+	farbcode5: &4 	#DARK RED
+	farbcode6: &5 	#DARK PURPLE
+	farbcode7: &6 	#GOLD
+	farbcode8: &7 	#GRAY
+	farbcode9: &8 	#DARK GRAY
+	farbcode10: &9 	#INDIGO
+	farbcode11: &A 	#GREEN
+	farbcode12: &B 	#AQUA
+	farbcode13: &C 	#RED
+	farbcode14: &D 	#PINK
+	farbcode15: &E 	#YELLOW
+	farbcode16: &F 	#WHITE
+	farbcode17: &M 	#STRIKE THROUGH
+	farbcode18: &N 	#UNDERLINED
+	farbcode19: &L 	#BOLD
+	farbcode20: &K 	#RANDOM
+	farbcode21: &O 	#ITALIC
+	farbcode22: &c&l #FettROT
+
 	
+	ptn: ?
+	tabnachricht1: Deine Tabliste ist nun aktiviert.	
 	header: &eWillkommen auf Zauschcraft &2%player% \\n &eSchau mal im Forum Vorbei unter: http://www.zauschcraft.de/forum/				#neue Zeile immer mit "Willkommen auf Zauschcraftß\\n Dies ist die Zeile 2"﻿	
 	footer: &ehttp://www.zauschcraft.de
+	
+#--------------------------------------------------------------------------------------Einstellungen Chatbegrüßung-----------------------------------------------------------------------	
 	contxt0: &9☣☣☣☣☣☣☣☣☣☣☣☣&c&lMulti Command GUI&9☣☣☣☣☣☣☣☣☣☣☣☣☣☣
-	contxt2: &eSchön das du wieder hier bist &2%player%!
-	contxt3: &eSchau mal im Forum Vorbei unter: http://www.zauschcraft.de/forum/
-	contxt1: &6Willkommen &9%player% 
-	contxt4: &c&lIn dein Inventar wurde das Multi Command GUI Item abgelegt
-	contxt5: &c&lIn dein Inventar wurde Das Reiseinventar abgelegt
-	contxt6: &9☣☣☣☣☣☣☣☣☣☣☣☣&c&lMulti Command GUI&9☣☣☣☣☣☣☣☣☣☣☣☣☣☣
+	contxt1: &eSchön das du wieder hier bist &2%player%!
+	contxt2: &eSchau mal im Forum Vorbei unter: http://www.zauschcraft.de/forum/	
+	contxt3: &c&4In dein Inventar wurde das Multi Command GUI Item abgelegt
+	contxt4: &c&4In dein Inventar wurde Das Reiseinventar abgelegt
+	contxt5: &9☣☣☣☣☣☣☣☣☣☣☣☣&c&lMulti Command GUI&9☣☣☣☣☣☣☣☣☣☣☣☣☣☣
 	
-	clear: air
-	
+	clear: air #Einstellungen Slots für Guis nach logout zu leeren
+#---------------------------------------------------------------------------------------------------Einstellungen für Hotbar Items-----------------------------------------------------	
 	guiitem: enchanted book
 	gui-name: &eMulti Command GUI
 	gui-lore: &4Zauschcraft Multi Command Gui
 	gui-cmd: MCG
 	
-	lager: chest
+	lager: nether star
 	lager-name: &eReiselager
 	lager-lore: &2Dies ist eine Transportbox welche dein Inventar erweitert!
 	lager-cmd: TB
-
+#---------------------------------------------------------------------------------------------------Einstellungen Scoreboard-----------------------------------------------------------
+	SBname: &c&lZ&ea&9u&7s&2c&4h&4&lCraft
+	SB13: &cWelt:➤ ➤&l%loop-player world%
+	SB16: &9✰✰✰&ewww.zauschcraft.de&9✰✰✰
+	SB15: &c&2☠☠&a&3&lHeilung übrig &c&5%loop-player's health% &c&2☠☠
+	SB12: &b&l&9✰✰✰&ediscord.gg/AQFvvRr✰✰✰
+	SBrang: &e&6&l%loop-player%
+	SB14: &e&9&l%loop-player's money%
+	SB11: &9✰✰✰&c&2www.zauschcraft.de/forum/&9✰✰✰
+	SB10: &3Anzahl der Spieler die online sind
+	SB9: &7%number of all players%&8/&7150
+	SB8: &c&2☠☠☠☠☠☠☠☠&a&3&lViel Spaß&c&2☠☠☠☠☠☠☠☠
+	
+	#--------------------------------------------------------------------------------------------Bis hier geht das konfigurierbare---------------------------------------------------
 on join:
-	set tab header to "{@header}" and footer to "{@footer}" for player
-	wait 10 tick
-	set slot 7 of player to {@lager} named "{@lager-name}"
+	set {_player} to player
+	wait 10 tick	 
+	set slot 7 of player to {@lager} named "{@lager-name}"  	
 	format slot 7 of player with {@lager} named "{@lager-name}" with lore "{@lager-lore}" to be unstealable
 	wait 10 tick
 	set slot 8 of player to {@guiitem} named "{@gui-name}"
 	format slot 8 of player with {@guiitem} named "{@gui-name}" with lore "{@gui-lore}" to be unstealable
+	set slot 6 of player to {@join} named "{@name}"
+	format slot 6 of player with {@join} named "{@name}" with lore "{@lore}" to close then run [execute player command "{@teleport}"]
+	execute player command "{@teleport}"
+	set the player's tablist name to "&c &f%name of player%"
+	set tab header to "{@header}" and footer to "{@footer}" for player
 	wait 10 second
+	broadcast "{@farbcode19}%player% {@farbcode7}hat {@belohungsnachricht}"
+	message "{@tabnachricht1}"	
 	message "{@contxt0}" 
 	message "{@contxt1}" 
 	message "{@contxt2}" 
@@ -224,6 +308,17 @@ on join:
 	message "{@contxt4}"
 	message "{@contxt5}"
 
+	
+on first join:
+	set slot 6 of player to {@firstjoin} named "{@name}"
+	format slot 6 of player with {@firstjoin} named "{@name}" with lore "{@lore}" to close then run [execute player command "{@teleport}"]
+
+
+	
+on left click with {@guiitem}:
+	wait 5 tick
+	stop
+	
 on right click with {@guiitem}:
 	wait 5 tick
 	open chest with 6 rows named "{@gui-name}" to player
@@ -292,6 +387,9 @@ on right click with {@lager}:
 	format slot 18 of player with {@litem18} named "{@litem18-name}" with lore "{@litem18-name}" to be unstealable
 	format slot 19 of player with {@litem19} named "{@litem19-name}" with lore "{@litem19-name}" to be unstealable	
 	format slot 20 of player with {@litem20} named "{@litem20-name}" with lore "{@litem20-name}" to be unstealable
+	format slot 48 of player with {@litem48} named "{@litem48-name}" with lore "{@litem48-lore}" to be unstealable
+	format slot 49 of player with {@litem49} named "{@litem49-name}" with lore "{@litem49-lore}" to be unstealable
+	format slot 47 of player with {@litem47} named "{@litem47-name}" with lore "{@litem47-lore}" to be unstealable
 	format slot 0 of player with {@litem0} named "{@litem0-name}" with lore "{@litem0-name}" to close then run [execute player command "{@litem0-cmd}"]
 	format slot 1 of player with {@litem1} named "{@litem1-name}" with lore "{@litem1-name}" to close then run [execute player command "{@litem1-cmd}"]
 	format slot 2 of player with {@litem2} named "{@litem2-name}" with lore "{@litem2-name}" to close then run [execute player command "{@litem2-cmd}"]
@@ -313,13 +411,16 @@ on right click with {@lager}:
 	format slot 18 of player with {@litem18} named "{@litem18-name}" with lore "{@litem18-name}" to close then run [execute player command "{@litem18-cmd}"]
 	format slot 19 of player with {@litem19} named "{@litem19-name}" with lore "{@litem19-name}" to close then run [execute player command "{@litem19-cmd}"]	
 	format slot 20 of player with {@litem20} named "{@litem20-name}" with lore "{@litem20-name}" to close then run [execute player command "{@litem20-cmd}"]
-	
+	format slot 48 of player with {@litem48} named "{@litem48-name}" with lore "{@litem48-lore}" to close then run [execute player command "{@litem48-cmd}"]
+	format slot 49 of player with {@litem49} named "{@litem49-name}" with lore "{@litem49-lore}" to close then run [execute player command "{@litem49-cmd}"]
+	format slot 47 of player with {@litem47} named "{@litem47-name}" with lore "{@litem47-lore}" to close then run [execute player command "say &l😄&l😃"]
+
 
 	
-command /sinv [<text>]:
-    permission: "inv.speichern"
-    permission message: {@permisionmessage} ►inv.speichern ♛
-    aliases: /si
+command /setinv [<text>]:
+    permission: inv.set
+    permission message: {@permisionmessage} ►inv.set ♛
+    aliases: /setinv
     trigger:
         if arg 1 is not set:
             make player execute command "hilfe"
@@ -336,9 +437,9 @@ command /sinv [<text>]:
         message "{@prefix} {@colorcode}Inventar unter Inventar %arg 1% gespeichert"
 		
 command /delinv [<text>]:
-    permission: "essentials.clearinventory"
-    permission message: {@permisionmessage} ►essentials.clearinventory ♛
-    aliases: /invl
+    permission: invdel.set
+    permission message: {@permisionmessage} ►invdel.set ♛
+    aliases: /setinvdel
     trigger:
         if arg 1 is not set:
             make player execute command "clear"
@@ -348,7 +449,7 @@ command /delinv [<text>]:
             set slot 8 of player to {@guiitem} named "{@gui-name}"
             format slot 8 of player with {@guiitem} named "{@gui-name}" with lore "{@gui-lore}" to be unstealable
             stop
-        if arg 1 is "all":
+        if arg 1 is set:
             make player execute command "clear"
             set slot 7 of player to {@lager} named "{@lager-name}"
             format slot 7 of player with {@lager} named "{@lager-name}" with lore "{@lager-lore}" to be unstealable
@@ -356,23 +457,12 @@ command /delinv [<text>]:
             set slot 8 of player to {@guiitem} named "{@gui-name}"
             format slot 8 of player with {@guiitem} named "{@gui-name}" with lore "{@gui-lore}" to be unstealable
             message "{@prefix} {@colorcode}Dein Invetar wurde komplett gelöscht"
-            stop
-        
-		
-command /mcgi [<text>]:
-  trigger:    
-    message "&f&l••••••••••••••••••••••••••••••••••••••••••••••••••••••••"
-    message "&b    ▶This skript is by SilentWolf◀"
-    message "&e feel free to share this skript with your Friends"
-    message " http://www.zauschcraft.de"
-    message " Source: https://github.com/alugilak/deluxmenu-script-addon "
-    message "&b          ✩✩✩✩ Version 1.3  ✩✩✩✩"
-    message "&f&l••••••••••••••••••••••••••••••••••••••••••••••••••••••••"
+            stop  
 	
-command /iwechsel [<text>]:
-    permission: "inv.wechsel"
-    permission message: "{@permisionmessage}" ►inv.wechsel ♛
-    aliases: /inventar
+command /rinventar [<text>]:
+    permission: inventar.set
+    permission message: {@permisionmessage} ►inventar.set ♛
+    aliases: /setinventar
     trigger:
         if arg 1 is not set: 
             diameter of {Inventory.%player%::*} is 0:
@@ -382,9 +472,9 @@ command /iwechsel [<text>]:
                 message "{@prefix} {@colorcode}Inventories:"
                 message "{@colorcode}%{Inventory.%player%::*}%"
                 stop
-        if arg 1 is "ihilfe":
+        if arg 1 is "hilfe":
             message "{@prefix} {@version} {@highlightcolor}Hilfe Menü"
-            message "{@colorcode}/sinv <name> - {@highlightcolor}Das aktuelle Inventar gespeichert."
+            message "{@colorcode}/setinv <name> - {@highlightcolor}Das aktuelle Inventar gespeichert."
             message "{@colorcode}/inv <name> - {@highlightcolor}Dein Inventar wurde gewechselt."
             message "{@colorcode}/delinv <name/all> - {@highlightcolor}Lösche Inventar nach Name oder alle."
             stop
@@ -398,9 +488,70 @@ command /iwechsel [<text>]:
         set the boots of player to {inv.%player%.feet.%arg 1%}
         message "{@prefix} {@colorcode}Du hast zu Inventar %arg 1%. gewechselt"
         stop	
+		
+command /mcg [<text>]:
+  trigger:    
+    message "&f&l••••••••••••••••••••••••••••••••••••••••••••••••••••••••"
+    message "&b    ▶This skript is by SilentWolf◀"
+    message "&e feel free to share this skript with your Friends"
+    message " http://www.zauschcraft.de"
+    message " Source: https://github.com/alugilak/deluxmenu-script-addon "
+    message "&b          ✩✩✩✩ Version 1.3  ✩✩✩✩"
+    message "&f&l••••••••••••••••••••••••••••••••••••••••••••••••••••••••"
+
+command /pn <player> <text>:
+	permission: pn.send
+	permission message: {@permissionpn} ►pn.send ♛
+	aliases: /sendpn
+	description: Privatnachricht an anderen Spieler
+	usage: /pns <player> <message>
+	aliases: /pm
+	trigger:
+		set {chat.private.reply.%player%} to arg 1
+		set {chat.private.reply.%arg 1%} to player
+		send "&9[PRIVATNACHRICHT] &azu: %arg 1% &e->&c %arg 2%" to player
+		send "&5[PRIVATNACHRICHT] &evon: %player% &e->&c %arg 2%" to arg 1
+
+command /pna <text>:	
+	permission: pna.send
+	permission message: {@permissionpna} ►pna.send ♛
+	description: Reply command.
+	usage: /pnas <message>
+	aliases: /pas
+	trigger:
+		send "&c[PRIVATNACHRICHT] &azu: %{chat.private.reply.%player%}% &e->&c %arg 1%" to player
+		send "&c[PRIVATNACHRICHT] &evon: %player% &e->&c %arg 1%" to {chat.private.reply.%player%}
+	
 log out:	
 	set slot 7 of player to {@clear} 
 	wait 10 tick
 	set slot 8 of player to {@clear} named ""
 	
 	
+every 30 ticks:
+	loop all players:
+		wipe loop-player's sidebar
+		set name of sidebar of loop-player to "{@SBname}"
+		set score "{@SB16}" in sidebar of loop-player to 16
+		set score "{@SB15}" in sidebar of loop-player to 15
+		set score "{@SBrang}" in sidebar of loop-player to 14
+		if loop-player do not have permission "zcboard.platin":
+			set {_prefix} to "%colored loop-player's prefix%"
+			replace all "[" with "" in {_prefix}
+			replace all "]" with "" in {_prefix}
+			set score "&e&3&lRang %{_prefix}%" in sidebar of loop-player to 13
+		if loop-player has permission "zcboard.platin2":
+			set {_prefix} to "%colored loop-player's prefix%"
+			replace all "[" with "" in {_prefix}
+			replace all "]" with "" in {_prefix}
+			set {_suffix} to "%colored loop-player's suffix%"
+			replace all "[" with "" in {_suffix}
+			replace all "]" with "" in {_suffix}
+			set score " %{_prefix}% &7 %{_suffix}%" in sidebar of loop-player to 13
+		set score "{@SB12}" in sidebar of loop-player to 12
+		set score "{@SB13}" in sidebar of loop-player to 11
+		set score "{@SB14}" in sidebar of loop-player to 10
+		set score "{@SB11}" in sidebar of loop-player to 9
+		set score "{@SB10}" in sidebar of loop-player to 8
+		set score "{@SB9}" in sidebar of loop-player to 7
+		set score "{@SB8}" in sidebar of loop-player to 6
